@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
@@ -120,6 +121,12 @@ class FlappyBird extends ApplicationAdapter {
 
         shapeRenderer.end();
         batch.end();
+
+        for(int i = 0 ; i < numberOfTubes ; i++){
+            if(Intersector.overlaps(birdCircle, topTubeRectangle[i]) || Intersector.overlaps(birdCircle, bottomTubeRectangle[i])){
+                Gdx.app.log("Intersect", "Intersects");
+            }
+        }
 	}
 	
 	@Override
