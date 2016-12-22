@@ -51,7 +51,7 @@ class FlappyBird extends ApplicationAdapter {
 
         if(gameState!=0) {
 
-            if(Gdx.input.justTouched()){
+            if(Gdx.input.justTouched() && birdY < Gdx.graphics.getHeight()){
                 velocity=-35;
             }
 
@@ -73,7 +73,7 @@ class FlappyBird extends ApplicationAdapter {
 
             if(birdY > 0 || velocity<0){
                 velocity+=gravity;
-                birdY = Math.max(0, Math.min(Gdx.graphics.getHeight() - birds[0].getHeight(), birdY - velocity));;
+                birdY -= velocity;
             }
         }
         else{
